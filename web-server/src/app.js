@@ -4,11 +4,19 @@ const express=require('express')
 const app=express()
 const dirpath=path.join(__dirname,'../public')
 app.use(express.static(dirpath))
-app.get(' ',(res,req)=>{
-    res.send("WELCOME TO HOME PAGE")
+app.set('view engine', 'hbs')
+
+app.get('',(req,res)=>{
+    res.render('index',{
+        title:'1st page',
+        name:'Arjun'
+    })
 })
-app.get('/about',(res,req)=>{
-    res.send("<h1>About page</h1>")
+app.get('/about',(req,res)=>{
+    res.render('about',{
+        title:'photo',
+        des:'its here'
+    })
 })
 app.get('/weather',(res,req)=>{
     res.send({
@@ -16,6 +24,8 @@ app.get('/weather',(res,req)=>{
         location:"Jammu"
     })
 })
+
+
 app.listen(3000,()=>{
     console.log("Server is on port 3000")
 })
