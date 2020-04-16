@@ -1,17 +1,29 @@
 const path=require('path')
 const express=require('express')
+const hbs=require('hbs')
 
 const app=express()
 const dirpath=path.join(__dirname,'../public')
+const viewpath=path.join(__dirname,'../templates/views')
+const partialpath=path.join(__dirname,'../templates/partials')
 app.use(express.static(dirpath))
 app.set('view engine', 'hbs')
-
+app.set('views',viewpath)
+hbs.registerPartials(partialpath)
 app.get('',(req,res)=>{
     res.render('index',{
-        title:'1st page',
-        name:'Arjun'
+        title:'Weather',
+        name:'Jammu'
     })
 })
+
+app.get('/help',(req,res)=>{
+    res.render('help',{
+        title:'For further help',
+        name:'Jammu division=7889608162'
+    })
+})
+
 app.get('/about',(req,res)=>{
     res.render('about',{
         title:'photo',
@@ -24,6 +36,8 @@ app.get('/weather',(res,req)=>{
         location:"Jammu"
     })
 })
+
+
 
 
 app.listen(3000,()=>{
