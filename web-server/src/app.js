@@ -38,10 +38,18 @@ app.get('/about',(req,res)=>{
         name:'Arjun'
     })
 })
-app.get('/weather',(res,req)=>{
+
+app.get('/weather', (req, res) => {
+    if (!req.query.address) {
+        return res.send({
+            error: 'You must provide an address!'
+        })
+    }
+
     res.send({
-        forecast:"It's hot",
-        location:"Jammu"
+        forecast: 'It is hot',
+        location: 'Jammu',
+        address: req.query.address
     })
 })
 
