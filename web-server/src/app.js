@@ -1,7 +1,9 @@
+const path=require('path')
 const express=require('express')
 
 const app=express()
-
+const dirpath=path.join(__dirname,'../public')
+app.use(express.static(dirpath))
 app.get(' ',(res,req)=>{
     res.send("WELCOME TO HOME PAGE")
 })
