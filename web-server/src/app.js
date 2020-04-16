@@ -27,7 +27,7 @@ app.get('/help',(req,res)=>{
 app.get('/about',(req,res)=>{
     res.render('about',{
         title:'photo',
-        des:'its here'
+        name:'Arjun'
     })
 })
 app.get('/weather',(res,req)=>{
