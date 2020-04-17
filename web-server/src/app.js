@@ -15,7 +15,7 @@ hbs.registerPartials(partialpath)
 app.get('',(req,res)=>{
     res.render('index',{
         title:'Weather',
-        name:'Jammu'
+        name:'Use this site to get weather'
     })
 })
 
@@ -48,7 +48,7 @@ app.get('/weather', (req, res) => {
         })
     }
 
-    geocode(req.query.address, (error, { latitude, longitude, location }) => {
+    geocode(req.query.address, (error, { latitude, longitude, location }={}) => {
         if (error) {
             return res.send({ error })
         }
